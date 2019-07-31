@@ -1,0 +1,13 @@
+--- 
+phases: 
+  build: 
+    commands: 
+      - "docker build -t packer_key_test ."
+      - "docker tag packer_key_test $AWS_ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/packer_key_test:latest"
+  post_build: 
+    commands: 
+      - "docker push $AWS_ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/packer_key_test:latest"
+  pre_build: 
+    commands: 
+      - "$(aws ecr get-login --no-include-email --region eu-central-1)"
+version: 0.2

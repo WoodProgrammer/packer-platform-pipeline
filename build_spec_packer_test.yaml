@@ -1,0 +1,7 @@
+--- 
+phases: 
+  build: 
+    commands: 
+      - "cd /go/src/terratest/tests/packer-test && go test -run TestTerraformPackerExample "
+
+version: 0.2
